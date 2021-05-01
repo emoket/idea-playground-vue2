@@ -2,7 +2,12 @@
   <v-app>
     <!-- navigation drawer -->
     <v-navigation-drawer v-model="drawer" app clipped>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item
+        v-for="item in items"
+        :key="item.title"
+        link
+        :to="{ name: item.routerName }"
+      >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -38,7 +43,9 @@
     <!-- app bar -->
 
     <v-main>
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </v-main>
   </v-app>
 </template>
@@ -54,9 +61,23 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { title: '작업환경 초기화', icon: 'mdi-view-dashboard', routerName: '' },
-      { title: 'About', icon: 'mdi-forum' },
+      {
+        title: '작업환경 초기화',
+        icon: 'mdi-view-dashboard',
+        routerName: 'InitNamespace',
+      },
+      { title: 'About', icon: 'mdi-forum', routerName: 'About' },
     ],
   }),
 };
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>
