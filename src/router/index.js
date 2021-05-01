@@ -19,6 +19,21 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
+  {
+    path: '/init-namespace',
+    name: 'InitNamespace',
+    component: () =>
+      import(
+        /* webpackChunkName: "initiatenamespace" */ '../views/InitiateNamespace.vue'
+      ),
+  },
+  {
+    path: '*',
+    component: () =>
+      import(
+        /* webpackChunkName: "notfoundcomponent" */ '../views/NotFoundComponent.vue'
+      ),
+  },
 ];
 
 const router = new VueRouter({
