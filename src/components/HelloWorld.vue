@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
 
   data: () => ({
     overlay: false,
@@ -42,21 +42,21 @@ export default {
   }),
   methods: {
     click_btn_init() {
-      const isConfirmed = confirm("초기화 하시겠습니까?");
+      const isConfirmed = confirm('초기화 하시겠습니까?');
 
       if (isConfirmed) {
         this.overlay = true;
 
         // split text into letters
-        const text = document.querySelector(".text");
-        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        const text = document.querySelector('.text');
+        text.innerHTML = text.textContent.replace(/\S/g, '<span>$&</span>');
 
         // add active class on hovered <span> tag
-        const letters = document.querySelectorAll("span");
+        const letters = document.querySelectorAll('span');
         this.disappear = setInterval(() => {
           let random_index = Math.floor(Math.random() * letters.length);
           console.log(`random_index --> ${random_index}`);
-          letters[random_index].classList.add("active");
+          letters[random_index].classList.add('active');
         }, 1000);
 
         setTimeout(() => {
