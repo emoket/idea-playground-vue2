@@ -38,14 +38,15 @@
         />
       </div>
 
-      <v-toolbar-title class="headline"> Idea Playground </v-toolbar-title>
+      <v-toolbar-title> Idea Playground </v-toolbar-title>
     </v-app-bar>
     <!-- app bar -->
 
     <v-main>
-      <transition name="fade" mode="out-in">
-        <router-view />
-      </transition>
+      <!-- Provides the application the proper gutter -->
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
     </v-main>
   </v-app>
 </template>
@@ -72,7 +73,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&family=Roboto&display=swap');
+
+/* html,
+body {
+  font-family: 'Noto Sans KR', 'Nanum Gothic', 'Roboto', sans-serif;
+} */
+
+#app {
+  font-family: 'Roboto', 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s;

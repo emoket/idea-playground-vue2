@@ -1,33 +1,25 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-overlay v-show="overlay" opacity="0.9">
-        <v-col cols="12" class="mb-4">
-          <v-scroll-y-reverse-transition>
-            <h1 v-show="overlay" class="text display-2 font-weight-bold mb-3">
-              작업공간을 초기화 하고 있습니다...
-            </h1>
-          </v-scroll-y-reverse-transition>
-        </v-col>
-      </v-overlay>
+  <v-container
+    fluid
+    fill-height
+    style="background: #e3e3e3"
+    class="d-flex justify-center align-center"
+  >
+    <v-btn color="primary" @click="click_btn_init"> 초기화 </v-btn>
 
-      <v-col cols="12">
-        <v-btn color="primary" @click="click_btn_init">초기화</v-btn>
+    <v-overlay v-show="overlay" opacity="0.9">
+      <v-col cols="12" class="mb-4">
+        <v-scroll-y-reverse-transition>
+          <h1 v-show="overlay" class="text display-3 font-weight-regular">
+            작업공간을 초기화 하고 있습니다...
+          </h1>
+        </v-scroll-y-reverse-transition>
       </v-col>
-    </v-row>
+    </v-overlay>
 
-    <div style="width: 100px">
-      <v-snackbar
-        bottom
-        right
-        outlined
-        color="success"
-        v-model="snackbar"
-        timeout="2000"
-      >
-        초기화 되었습니다.
-      </v-snackbar>
-    </div>
+    <v-snackbar bottom right color="success" v-model="snackbar" timeout="2000">
+      초기화 되었습니다.
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -63,7 +55,7 @@ export default {
           this.overlay = false;
           this.snackbar = true;
           clearInterval(this.disappear);
-        }, 20000);
+        }, 5000);
       }
     },
   },
