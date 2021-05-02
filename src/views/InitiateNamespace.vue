@@ -1,17 +1,12 @@
 <template>
-  <v-container
-    fluid
-    fill-height
-    style="background: #e3e3e3"
-    class="d-flex justify-center align-center"
-  >
+  <v-container fill-height class="d-flex justify-center align-center">
     <v-btn color="primary" @click="click_btn_init"> 초기화 </v-btn>
 
     <v-overlay v-show="overlay" opacity="0.9">
       <v-col cols="12" class="mb-4">
         <v-scroll-y-reverse-transition>
           <h1 v-show="overlay" class="text display-3 font-weight-regular">
-            작업공간을 초기화 하고 있습니다...
+            작업공간을 초기화 하고 있습니다
           </h1>
         </v-scroll-y-reverse-transition>
       </v-col>
@@ -25,8 +20,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-
   data: () => ({
     overlay: false,
     disappear: undefined,
@@ -45,11 +38,13 @@ export default {
 
         // add active class on hovered <span> tag
         const letters = document.querySelectorAll('span');
+
+        // 500ms 마다 한 글자씩 사라지도록 한다.
         this.disappear = setInterval(() => {
           let random_index = Math.floor(Math.random() * letters.length);
-          console.log(`random_index --> ${random_index}`);
+          // console.log(`random_index --> ${random_index}`);
           letters[random_index].classList.add('active');
-        }, 1000);
+        }, 500);
 
         setTimeout(() => {
           this.overlay = false;

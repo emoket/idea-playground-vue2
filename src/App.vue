@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <!-- navigation drawer -->
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list-item
         v-for="item in items"
@@ -17,15 +16,9 @@
         </v-list-item-content>
       </v-list-item>
     </v-navigation-drawer>
-    <!-- navigation drawer -->
 
-    <!-- app bar -->
     <v-app-bar color="primary" dark app clipped-left>
-      <v-app-bar-nav-icon @click="drawer = !drawer">
-        <v-icon large>
-          {{ drawer ? 'mdi-chevron-left' : 'mdi-chevron-right' }}
-        </v-icon>
-      </v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
 
       <div class="d-flex align-center">
         <v-img
@@ -34,19 +27,23 @@
           contain
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
           transition="scale-transition"
-          width="40"
+          width="35"
         />
       </div>
 
       <v-toolbar-title> Idea Playground </v-toolbar-title>
+
+      <v-spacer />
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
     </v-app-bar>
-    <!-- app bar -->
 
     <v-main>
-      <!-- Provides the application the proper gutter -->
-        <transition name="fade" mode="out-in">
-          <router-view />
-        </transition>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </v-main>
   </v-app>
 </template>
@@ -75,12 +72,7 @@ export default {
 
 <style>
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR&family=Roboto&display=swap');
-
-/* html,
-body {
-  font-family: 'Noto Sans KR', 'Nanum Gothic', 'Roboto', sans-serif;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Noto+Sans+KR&family=Nanum+Gothic:wght@400;700&display=swap');
 
 #app {
   font-family: 'Roboto', 'Noto Sans KR', 'Nanum Gothic', sans-serif;
